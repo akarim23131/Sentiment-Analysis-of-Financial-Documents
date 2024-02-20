@@ -2,36 +2,36 @@
 Quantifying the emotions of financial documents has been considered one of the tedious task. But thanks to the two main dictionaries which made our tasks easier, fast, and accurate. We will basically use Loughran-McDonald and harvard iv-4 sentiment dictionary to quantify the tone of our financial text. 
 These both dictionaries use lists of words called lexicons. In these lists, the words have been pre-scored for sentiment (e.g., positivity/negativity) as well as the strength of the sentiment. But for us there is no need to be worried about the backend work. We will simply two important pacakages and run the code step by step. 
 
-#STEP 1: First we will install pysentiment2 which is a library for sentiment analysis in dictionary framework.
+# First we will install pysentiment2 which is a library for sentiment analysis in dictionary framework.
 
 ```ruby
 !pip install pysentiment2
 ```
 
-#Step 2: Make a separate directory and save your input files in it. Your input files has to be in .txt formate. And each has a specific name. So, that after finding the tone it will be easy to identify the tone of each document. 
+# Make a separate directory and save your input files in it. Your input files has to be in .txt formate. And each has a specific name. So, that after finding the tone it will be easy to identify the tone of each document. 
 ```ruby
 !mkdir input
 ```
 
-#Step 3: Import necessary packages 
+# Import necessary packages 
 ```ruby
 import os
 import pandas as pd
 import pysentiment2 as ps
 ```
 
-#Step 4: Create an instances for LM or Harvard Dictionary
+# Create an instances for LM or Harvard Dictionary
 ```ruby
 lm = ps.LM()
 ```
-Or
+# Or
 ```ruby
 hiv4 = ps.HIV4()
 ```
 
 Now the rest of the code is same for both of the dictionaries
 
-#Step 5:  Specify the directory containing your text files
+# Specify the directory containing your text files
 
 ```ruby
 directory = 'Your input directory path'
@@ -41,7 +41,6 @@ directory = 'Your input directory path'
 ```ruby
 results = []
 ```
-#Step 6
 # The below code will run on the entire directory and quantify the tone.
 # Iterate over all files in the directory
 ```ruby
@@ -52,7 +51,7 @@ for filename in os.listdir(directory):
             text = f.read()
 ```
 
-#Tokenize the text
+# Tokenize the text
 ```ruby
 tokens = lm.tokenize(text)
 ```
@@ -67,12 +66,12 @@ score = lm.get_score(tokens)
 results.append((filename, score['Positive'], score['Negative'], score['Polarity'], score['Subjectivity']))
 ```
 
-#Step 7: Convert the results to a DataFrame
+# Convert the results to a DataFrame
 ```ruby
 df = pd.DataFrame(results, columns=['Filename', 'Positive', 'Negative', 'Polarity', 'Subjectivity'])
 ```
 
-#Step 8: Save the DataFrame to an Excel file
+# Save the DataFrame to an Excel file
 ```ruby
 df.to_excel('your output file.xlsx', index=False)
 ```
@@ -107,12 +106,11 @@ return score['Positive'], score['Negative'], score['Polarity'], score['Subjectiv
 ```
 
 # Example paragraph text
+
 ```ruby
 paragraph_text = "This is an example paragraph. It has both positive and negative sentiments."
 ```
-
 # Get sentiment analysis results for the paragraph
-
 ```ruby
 positive, negative, polarity, subjectivity = get_sentiment_analysis(paragraph_text)
 ````
