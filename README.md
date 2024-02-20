@@ -9,118 +9,121 @@ These both dictionaries use lists of words called lexicons. In these lists, the 
 ```
 
 #Step 2: Make a separate directory and save your input files in it. Your input files has to be in .txt formate. And each has a specific name. So, that after finding the tone it will be easy to identify the tone of each document. 
-'''ruby
+```ruby
 !mkdir input
-'''
+```
 
 #Step 3: Import necessary packages 
-'''ruby
+```ruby
 import os
 import pandas as pd
 import pysentiment2 as ps
-'''
+```
 
 #Step 4: Create an instances for LM or Harvard Dictionary
-'''ruby
+```ruby
 lm = ps.LM()
-'''
+```
 Or
-'''ruby
+```ruby
 hiv4 = ps.HIV4()
-'''
+```
 
 Now the rest of the code is same for both of the dictionaries
 
 #Step 5:  Specify the directory containing your text files
 
-'''ruby
+```ruby
 directory = 'Your input directory path'
-'''
+```
 
 # Initialize a list to store the results
-'''ruby
+```ruby
 results = []
-'''
+```
 #Step 6
 # The below code will run on the entire directory and quantify the tone.
 # Iterate over all files in the directory
-'''ruby
+```ruby
 for filename in os.listdir(directory):
     if filename.endswith('.txt'):
         # Open the file
         with open(os.path.join(directory, filename), 'r', encoding='cp1252') as f:
             text = f.read()
-'''
+```
 
 #Tokenize the text
-'''ruby
+```ruby
 tokens = lm.tokenize(text)
-'''
+```
 
 # Get the sentiment score
-'''ruby
+```ruby
 score = lm.get_score(tokens)
-'''
+```
 
 # Add the filename and score to the results
-'''ruby
+```ruby
 results.append((filename, score['Positive'], score['Negative'], score['Polarity'], score['Subjectivity']))
-'''
+```
 
 #Step 7: Convert the results to a DataFrame
-'''ruby
+```ruby
 df = pd.DataFrame(results, columns=['Filename', 'Positive', 'Negative', 'Polarity', 'Subjectivity'])
-'''
+```
 
 #Step 8: Save the DataFrame to an Excel file
+```ruby
 df.to_excel('your output file.xlsx', index=False)
-
+```
 
 If you have just one single file, simply give the directoty of that single file. If you have just a paragraph, you can simply modify the code like below.
 
-'''ruby
+```ruby
 import pandas as pd
 import pysentiment2 as ps
-'''
+```
 
 # Create an instance of the LM dictionary
-'''ruby
+```ruby
 lm = ps.LM()
 def get_sentiment_analysis(text):
-'''
+```
 
 # Tokenize the text
-'''ruby
+```ruby
 tokens = lm.tokenize(text)
-'''
+```
 
 # Get the sentiment score
- '''ruby
+```ruby
  score = lm.get_score(tokens)
-'''
+```
 
 # Return the results
 
-'''ruby
+````ruby
 return score['Positive'], score['Negative'], score['Polarity'], score['Subjectivity']
-'''
+```
 
 # Example paragraph text
-'''ruby
+```ruby
 paragraph_text = "This is an example paragraph. It has both positive and negative sentiments."
-'''
+```
+
 # Get sentiment analysis results for the paragraph
 
-'''ruby
+```ruby
 positive, negative, polarity, subjectivity = get_sentiment_analysis(paragraph_text)
-'''
+````
+
 # Display the results
-'''ruby
+```ruby
 print("Positive: {}".format(positive))
 print("Negative: {}".format(negative))
 print("Polarity: {}".format(polarity))
 print("Subjectivity: {}".format(subjectivity))
-'''
+```
 
 
 
