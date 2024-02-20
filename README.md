@@ -103,15 +103,9 @@ tokens = lm.tokenize(text)
 
 ````ruby
 return score['Positive'], score['Negative'], score['Polarity'], score['Subjectivity']
-```
-
 ### Example paragraph text
-
-```ruby
 paragraph_text = "This is an example paragraph. It has both positive and negative sentiments."
-```
 ### Get sentiment analysis results for the paragraph
-```ruby
 positive, negative, polarity, subjectivity = get_sentiment_analysis(paragraph_text)
 ````
 
