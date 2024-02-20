@@ -1,1 +1,38 @@
+```ruby
+!pip install pysentiment2
+!mkdir input
+import os
+import pandas as pd
+import pysentiment2 as ps
 
+# Create an instance of the LM dictionary
+lm = ps.LM()
+
+# Specify the directory containing your text files
+directory = '/content/input'  # replace with your directory path
+
+# Initialize a list to store the results
+results = []
+
+# Iterate over all files in the directory
+for filename in os.listdir(directory):
+    if filename.endswith('.txt'):
+        # Open the file
+        with open(os.path.join(directory, filename), 'r', encoding='cp1252') as f:
+            text = f.read()
+
+        # Tokenize the text
+        tokens = lm.tokenize(text)
+
+        # Get the sentiment score
+        score = lm.get_score(tokens)
+
+        # Add the filename and score to the results
+        results.append((filename, score['Positive'], score['Negative'], score['Polarity'], score['Subjectivity']))
+
+# Convert the results to a DataFrame
+df = pd.DataFrame(results, columns=['Filename', 'Positive', 'Negative', 'Polarity', 'Subjectivity'])
+
+# Save the DataFrame to an Excel file
+df.to_excel('sentiment_scores.xlsx', index=False)
+```
