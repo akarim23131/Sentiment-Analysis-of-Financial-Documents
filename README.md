@@ -1,4 +1,4 @@
-# Sentiment-Analysis-of-Financial-Documents
+## Sentiment-Analysis-of-Financial-Documents
 Quantifying the emotions of financial documents has been considered one of the tedious task. But thanks to the two main dictionaries which made our tasks easier, fast, and accurate. We will basically use Loughran-McDonald and harvard iv-4 sentiment dictionary to quantify the tone of our financial text. 
 These both dictionaries use lists of words called lexicons. In these lists, the words have been pre-scored for sentiment (e.g., positivity/negativity) as well as the strength of the sentiment. But for us there is no need to be worried about the backend work. We will simply two important pacakages and run the code step by step. 
 
