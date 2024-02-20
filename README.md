@@ -4,9 +4,9 @@ These both dictionaries use lists of words called lexicons. In these lists, the 
 
 #STEP 1: First we will install pysentiment2 which is a library for sentiment analysis in dictionary framework.
 
-'''ruby
+```ruby
 !pip install pysentiment2
-'''
+```
 
 #Step 2: Make a separate directory and save your input files in it. Your input files has to be in .txt formate. And each has a specific name. So, that after finding the tone it will be easy to identify the tone of each document. 
 '''ruby
