@@ -1,4 +1,4 @@
-```ruby
+
 !pip install pysentiment2
 !mkdir input
 import os
@@ -35,4 +35,4 @@ df = pd.DataFrame(results, columns=['Filename', 'Positive', 'Negative', 'Polarit
 
 # Save the DataFrame to an Excel file
 df.to_excel('sentiment_scores.xlsx', index=False)
-```
+
