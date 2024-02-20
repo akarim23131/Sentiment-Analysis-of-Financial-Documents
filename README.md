@@ -13,14 +13,14 @@ These both dictionaries use lists of words called lexicons. In these lists, the 
 !mkdir input
 ```
 
-## Import necessary packages 
+### Import necessary packages 
 ```ruby
 import os
 import pandas as pd
 import pysentiment2 as ps
 ```
 
-## Create an instances for LM or Harvard Dictionary
+### Create an instances for LM or Harvard Dictionary
 ```ruby
 lm = ps.LM()
 ```
@@ -31,18 +31,18 @@ hiv4 = ps.HIV4()
 
 Now the rest of the code is same for both of the dictionaries
 
-## Specify the directory containing your text files
+### Specify the directory containing your text files
 
 ```ruby
 directory = 'Your input directory path'
 ```
 
-## Initialize a list to store the results
+### Initialize a list to store the results
 ```ruby
 results = []
 ```
-## The below code will run on the entire directory and quantify the tone.
-## Iterate over all files in the directory
+### The below code will run on the entire directory and quantify the tone.
+### Iterate over all files in the directory
 ```ruby
 for filename in os.listdir(directory):
     if filename.endswith('.txt'):
@@ -51,27 +51,27 @@ for filename in os.listdir(directory):
             text = f.read()
 ```
 
-## Tokenize the text
+### Tokenize the text
 ```ruby
 tokens = lm.tokenize(text)
 ```
 
-## Get the sentiment score
+### Get the sentiment score
 ```ruby
 score = lm.get_score(tokens)
 ```
 
-## Add the filename and score to the results
+### Add the filename and score to the results
 ```ruby
 results.append((filename, score['Positive'], score['Negative'], score['Polarity'], score['Subjectivity']))
 ```
 
-## Convert the results to a DataFrame
+### Convert the results to a DataFrame
 ```ruby
 df = pd.DataFrame(results, columns=['Filename', 'Positive', 'Negative', 'Polarity', 'Subjectivity'])
 ```
 
-## Save the DataFrame to an Excel file
+### Save the DataFrame to an Excel file
 ```ruby
 df.to_excel('your output file.xlsx', index=False)
 ```
@@ -83,39 +83,39 @@ import pandas as pd
 import pysentiment2 as ps
 ```
 
-## Create an instance of the LM dictionary
+### Create an instance of the LM dictionary
 ```ruby
 lm = ps.LM()
 def get_sentiment_analysis(text):
 ```
 
-## Tokenize the text
+### Tokenize the text
 ```ruby
 tokens = lm.tokenize(text)
 ```
 
-## Get the sentiment score
+### Get the sentiment score
 ```ruby
  score = lm.get_score(tokens)
 ```
 
-## Return the results
+### Return the results
 
 ````ruby
 return score['Positive'], score['Negative'], score['Polarity'], score['Subjectivity']
 ```
 
-## Example paragraph text
+### Example paragraph text
 
 ```ruby
 paragraph_text = "This is an example paragraph. It has both positive and negative sentiments."
 ```
-## Get sentiment analysis results for the paragraph
+### Get sentiment analysis results for the paragraph
 ```ruby
 positive, negative, polarity, subjectivity = get_sentiment_analysis(paragraph_text)
 ````
 
-## Display the results
+### Display the results
 ```ruby
 print("Positive: {}".format(positive))
 print("Negative: {}".format(negative))
