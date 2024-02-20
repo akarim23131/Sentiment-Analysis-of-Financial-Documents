@@ -1,14 +1,14 @@
-## Sentiment-Analysis-of-Financial-Documents
+### Sentiment-Analysis-of-Financial-Documents
 Quantifying the emotions of financial documents has been considered one of the tedious task. But thanks to the two main dictionaries which made our tasks easier, fast, and accurate. We will basically use Loughran-McDonald and harvard iv-4 sentiment dictionary to quantify the tone of our financial text. 
 These both dictionaries use lists of words called lexicons. In these lists, the words have been pre-scored for sentiment (e.g., positivity/negativity) as well as the strength of the sentiment. But for us there is no need to be worried about the backend work. We will simply two important pacakages and run the code step by step. 
 
-@# First we will install pysentiment2 which is a library for sentiment analysis in dictionary framework.
+### First we will install pysentiment2 which is a library for sentiment analysis in dictionary framework.
 
 ```ruby
 !pip install pysentiment2
 ```
 
-## Make a separate directory and save your input files in it. Your input files has to be in .txt formate. And each has a specific name. So, that after finding the tone it will be easy to identify the tone of each document. 
+### Make a separate directory and save your input files in it. Your input files has to be in .txt formate. And each has a specific name. So, that after finding the tone it will be easy to identify the tone of each document. 
 ```ruby
 !mkdir input
 ```
